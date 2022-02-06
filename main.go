@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/TechBowl-japan/go-stations/db"
+	// "github.com/TechBowl-japan/go-stations/handler"
 )
 
 func main() {
@@ -49,7 +50,7 @@ func realMain() error {
 
 	// set http handlers
 	mux := http.NewServeMux()
-	http.ListenAndServe(":8080", mux)
+	log.Fatal(http.ListenAndServe(defaultPort, mux))
 
 	// TODO: ここから実装を行う
 
