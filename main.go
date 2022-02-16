@@ -49,10 +49,10 @@ func realMain() error {
 	defer todoDB.Close()
 
 	// set http handlers
-	// mux := http.NewServeMux()
+	mux := http.NewServeMux()
 	h := handler.NewHealthzHandler()
-	http.Handle("/healthz", h)
-	http.ListenAndServe(port, nil)
+	mux.Handle("/healthz", h)
+	http.ListenAndServe(port, mux)
 
 	// TODO: ここから実装を行う
 
