@@ -3,8 +3,8 @@ package service
 import (
 	"context"
 	"database/sql"
-	"fmt"
-	"github.com/TechBowl-japan/go-stations/model"
+	// "github.com/TechBowl-japan/go-stations/model"
+	"github.com/oba18/go-stations/model"
 )
 
 // A TODOService implements CRUD of TODO entities.
@@ -50,12 +50,11 @@ func (s *TODOService) CreateTODO(ctx context.Context, subject, description strin
 	}
 
 	// model.todoの定義
-	var todo model.TODO
+	var todo = model.TODO{}
 
 	// クエリー実行
 	row := stmt.QueryRowContext(ctx, id)
-	err = row.Scan(todo)
-	fmt.Println(todo)
+	err = row.Scan(&todo.Subject, &todo)
 	if err != nil {
 		return nil, err
 	}
