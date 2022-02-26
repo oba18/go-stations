@@ -50,7 +50,7 @@ func (s *TODOService) CreateTODO(ctx context.Context, subject, description strin
 	}
 
 	// model.todoの定義
-	var todo *model.TODO
+	var todo model.TODO
 
 	// クエリー実行
 	row := stmt.QueryRowContext(ctx, id)
@@ -59,7 +59,7 @@ func (s *TODOService) CreateTODO(ctx context.Context, subject, description strin
 	if err != nil {
 		return nil, err
 	}
-	return todo, nil
+	return &todo, nil
 }
 
 // ReadTODO reads TODOs on DB.
